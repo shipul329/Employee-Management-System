@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 const Login = ({handleLogin}) => {
 
+  console.log(handleLogin)
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -10,7 +12,7 @@ const Login = ({handleLogin}) => {
 
     console.log("Email is ", email)
     console.log("Password is ", password)
-    //handleLogin(email, password)
+    handleLogin(email, password)
     setEmail("")
     setPassword("")
   }
