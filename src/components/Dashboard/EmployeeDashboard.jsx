@@ -3,14 +3,14 @@ import Header from '../others/header'
 import TaskList from '../others/Tasklist'
 import Task from '../Tasks/task'
 
-const EmployeeDashboard = ({ logout }) => {
+const EmployeeDashboard = ({ props }) => {
   return (
     <div className='px-10 py-5 bg-[#1c1c1c] h-screen'>
-        <Header logout={logout} />
-        <div className='mt-6'>
-          <TaskList/>
-        </div>
-        <Task/>
+        <Header changeUser={props.changeUser} data={props.data} />
+        
+        <TaskList data={props.data}/>
+
+        <Task data={props.data}/> 
     </div>
   )
 }
