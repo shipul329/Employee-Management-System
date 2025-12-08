@@ -6,7 +6,7 @@ import Task from '../Tasks/task'
 const EmployeeDashboard = ({ props }) => {
   return (
     <div className='px-10 py-5 bg-[#1c1c1c] h-screen'>
-        <Header changeUser={props.changeUser} data={props.data} />
+        <Header changeUser={props.changeUser} data={props.data} logout={props.logout} />
         
         <TaskList data={props.data}/>
 
@@ -15,4 +15,4 @@ const EmployeeDashboard = ({ props }) => {
   )
 }
 
-export default EmployeeDashboard
+export default EmployeeDashboard 

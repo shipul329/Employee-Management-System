@@ -11,12 +11,11 @@ body{
 }
 
 #task::-webkit-scrollbar{
-    width:0 !important;
-    height:0 !important;
-    display:none !important; 
+    background-color: transparent;
+    height: 5px; 
 }
 
-#task{
-    -ms-overflow-style:none !important;
-    scrollbar-width: none !important;
+#task::-webkit-scrollbar-thumb{
+    background-color: rgb(143, 143, 143);
+    border-radius: 50px; 
 }

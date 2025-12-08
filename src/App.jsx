@@ -14,11 +14,11 @@ const App = () => {
     const loggedInUser = localStorage.getItem('loggedInUser')
 
     if(loggedInUser) {
-      const userData = JSON.parse(loggedInUser)
-      setUser(userData.role)
-      setLoggedInUserData(userData.data)
+      const userInfo = JSON.parse(loggedInUser)
+      setUser(userInfo.role)
+      setLoggedInUserData(userInfo.data) 
     }
-  },[])
+  },[]) 
 
   const handleLogin = (email, password) => {
 
@@ -39,7 +39,7 @@ const App = () => {
         return
     }
 
-    alert("Invalid Credentials")
+    alert("Invalid Credentials")  
   }
 
   const handleLogout = () => {
@@ -63,4 +63,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App  
