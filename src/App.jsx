@@ -1,66 +1,18 @@
-import React, {useEffect, useContext, useState} from 'react'
-import Login from './components/Auth/login'
-import AdminDashboard from './components/Dashboard/AdminDashboard'
-import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
-import {AuthContext} from './context/AuthProvider' 
+import EmployeeList from "./components/EmployeeList.jsx";
+import EmployeeForm from "./components/EmployeeForm.jsx";
 
-const App = () => {
+import { useState } from "react";
 
-  const [user, setUser] = useState(null)
-  const [loggedInUserData, setLoggedInUserData] = useState(null) 
-  const [userData] = useContext(AuthContext) 
+export default function App() {
+  const [update, setUpdate] = useState(false);
 
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem('loggedInUser')
-
-    if(loggedInUser) {
-      const userInfo = JSON.parse(loggedInUser)
-      setUser(userInfo.role)
-      setLoggedInUserData(userInfo.data) 
-    }
-  },[]) 
-
-  const handleLogin = (email, password) => {
-
-    // ADMIN LOGIN
-    if(email === 'admin@example.com' && password === '123'){
-        setUser('admin')
-        localStorage.setItem('loggedInUser', JSON.stringify({role:'admin'}))
-        return
-    }
-
-    // EMPLOYEE LOGIN
-    const employee = userData?.find(emp => emp.email === email && emp.password === password)
-
-    if(employee){
-        setUser('employee')
-        setLoggedInUserData(employee)
-        localStorage.setItem('loggedInUser', JSON.stringify({role:'employee', data: employee}))
-        return
-    }
-
-    alert("Invalid Credentials")  
-  }
-
-  const handleLogout = () => {
-    localStorage.removeItem("loggedInUser");
-    setUser(null);
-    setLoggedInUserData(null);
-  };
+  const fetchEmployees = () => setUpdate(!update);
 
   return (
-    <>
-      {!user && <Login handleLogin={handleLogin}/>} 
-
-      {user === 'admin' && (
-        <AdminDashboard changeUser={setUser} logout={handleLogout}/>
-      )}
-
-      {user === 'employee' && (
-        <EmployeeDashboard changeUser={setUser} data={loggedInUserData} logout={handleLogout}/>
-      )}
-    </>
-  )
+    <div>
+      <h1>Employee Management System</h1>
+      <EmployeeForm fetchEmployees={fetchEmployees} />
+      <EmployeeList fetchEmployees={fetchEmployees} />
+    </div>
+  );
 }
-
-export default App  
