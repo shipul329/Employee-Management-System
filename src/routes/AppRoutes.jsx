@@ -1,49 +1,19 @@
-import { Routes, Route } from "react-router-dom";
-import Login from "../pages/Login";
-import Dashboard from "../pages/Dashboard";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// Update imports to match your repo structure
 import EmployeeList from "../pages/EmployeeList";
-import EmployeeForm from "../pages/EmployeeForm";
-import NotFound from "../pages/NotFound";
-import ProtectedRoute from "../components/ProtectedRoute";
+import Dashboard from "../pages/Dashboard";
 
-const AppRoutes = () => (
-  <Routes>
-    <Route path="/login" element={<Login />} />
-
-    <Route
-      path="/"
-      element={
-        <ProtectedRoute>
-          <Dashboard />
-        </ProtectedRoute>
-      }
-    />
-    <Route
-      path="/employees"
-      element={
-        <ProtectedRoute>
-          <EmployeeList />
-        </ProtectedRoute>
-      }
-    />
-    <Route
-      path="/employees/new"
-      element={
-        <ProtectedRoute>
-          <EmployeeForm />
-        </ProtectedRoute>
-      }
-    />
-    <Route
-      path="/employees/:id"
-      element={
-        <ProtectedRoute>
-          <EmployeeForm />
-        </ProtectedRoute>
-      }
-    />
-    <Route path="*" element={<NotFound />} />
-  </Routes>
-);
+function AppRoutes() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/employees" element={<EmployeeList />} />
+        {/* Add more routes here if you have other pages */}
+      </Routes>
+    </Router>
+  );
+}
 
 export default AppRoutes;

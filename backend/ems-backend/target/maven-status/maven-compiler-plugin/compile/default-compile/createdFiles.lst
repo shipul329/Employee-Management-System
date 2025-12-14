@@ -1,11 +1,10 @@
 com\shipul\ems\controller\EmployeeController.class
-com\shipul\ems\model\User.class
 com\shipul\ems\model\Employee.class
-com\shipul\ems\controller\AuthController.class
 com\shipul\ems\repository\EmployeeRepository.class
 com\shipul\ems\repository\UserRepository.class
 com\shipul\ems\security\JwtUtils.class
+com\shipul\ems\model\User.class
+com\shipul\ems\controller\AuthController.class
 com\shipul\ems\controller\AuthController$TokenResponse.class
 com\shipul\ems\security\SecurityConfig.class
-com\shipul\ems\EmsApplication.class
 com\shipul\ems\controller\AuthController$LoginRequest.class

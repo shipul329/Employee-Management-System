@@ -1,62 +1,34 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import API from "../api/axios";
+import axios from "../services/api"; // backend API base URL
 
-const Login = () => {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth();
-  const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await API.post("/auth/login", { email, password });
-      login(res.data.token);
-      navigate("/");
+      const res = await axios.post("/auth/login", { email, password });
+      localStorage.setItem("token", res.data.token);
+      window.location.href = "/dashboard";
     } catch (err) {
+      console.error(err);
       setError("Invalid credentials");
     }
   };
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "400px", margin: "auto" }}>
-      <h1>Login Page</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          style={{ display: "block", width: "100%", marginBottom: "1rem" }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          style={{ display: "block", width: "100%", marginBottom: "1rem" }}
-        />
-        <button
-          type="submit"
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            backgroundColor: "#1d4ed8",
-            color: "white",
-            border: "none",
-          }}
-        >
-          Login
-        </button>
+    <div className="flex justify-center items-center h-screen">
+      <form onSubmit={handleLogin} className="bg-white p-8 rounded shadow w-96">
+        <h1 className="text-xl font-bold mb-4">Login</h1>
+        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="border p-2 w-full mb-2" required />
+        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="border p-2 w-full mb-2" required />
+        {error && <p className="text-red-500">{error}</p>}
+        <button type="submit" className="bg-blue-500 text-white p-2 w-full rounded mt-2">Login</button>
       </form>
     </div>
   );
-};
+}
 
-export default Login; 
+export default Login;

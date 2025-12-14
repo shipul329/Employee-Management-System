@@ -1,36 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-
-const Navbar = () => {
-  const { isAuthenticated, logout } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
-
-  if (!isAuthenticated) return null;
-
+function Navbar() {
   return (
-    <nav style={{ padding: "1rem", backgroundColor: "#1d4ed8", color: "white" }}>
-      <Link to="/" style={{ color: "white", marginRight: "1rem" }}>Dashboard</Link>
-      <Link to="/employees" style={{ color: "white", marginRight: "1rem" }}>Employees</Link>
-      <button
-        onClick={handleLogout}
-        style={{
-          marginLeft: "auto",
-          backgroundColor: "#ef4444",
-          color: "white",
-          border: "none",
-          padding: "0.3rem 0.6rem",
-          cursor: "pointer",
-        }}
-      >
-        Logout
-      </button>
+    <nav className="bg-gray-800 text-white p-4 flex justify-between">
+      <div className="font-bold text-xl">EMS</div>
+      <div className="space-x-4">
+        <a href="/" className="hover:underline">Dashboard</a>
+        <a href="/employees" className="hover:underline">Employees</a>
+      </div>
     </nav>
   );
-};
+}
 
 export default Navbar;
