@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "../services/api"; // backend API base URL
+import axios from "../api/axios"; // backend API base URL
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -13,7 +13,6 @@ function Login() {
       localStorage.setItem("token", res.data.token);
       window.location.href = "/dashboard";
     } catch (err) {
-      console.error(err);
       setError("Invalid credentials");
     }
   };

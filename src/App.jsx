@@ -1,13 +1,13 @@
+import React from "react";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import AppRoutes from "./routes/AppRoutes";
+import EmployeeList from "./pages/EmployeeList";
 
 function App() {
   return (
-    <>
-      <AppRoutes />
-      <ToastContainer position="top-right" autoClose={3000} />
-    </>
+    <div>
+      <EmployeeList />
+      <ToastContainer />
+    </div>
   );
 }
 

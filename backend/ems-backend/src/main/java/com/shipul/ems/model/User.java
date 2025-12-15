@@ -1,22 +1,15 @@
 package com.shipul.ems.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 
-@Entity
-@Table(name = "users") // ✅ IMPORTANT FIX
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Entity
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(unique = true, nullable = false)
+    private String name;
     private String email;
-
-    @Column(nullable = false)
     private String password;
 }

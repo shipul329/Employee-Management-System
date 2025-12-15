@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "../services/api";
+import axios from "../api/axios";
 import { toast } from "react-toastify";
 
 function EmployeeForm({ editing, setEditing, refresh }) {
