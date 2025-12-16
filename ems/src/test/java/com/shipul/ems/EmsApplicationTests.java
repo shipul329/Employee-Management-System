@@ -1,10 +1,10 @@
-package com.shipul.ems.ems_backend;
+package com.shipul.ems;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EmsBackendApplicationTests {
+class EmsApplicationTests {
 
 	@Test
 	void contextLoads() {
