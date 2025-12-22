@@ -2,20 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    color:#fff;
-}
-
-body{
-    background-color: #111;
-}
-
-#task::-webkit-scrollbar{
-    background-color: transparent;
-    height: 5px; 
-}
-
-#task::-webkit-scrollbar-thumb{
-    background-color: rgb(143, 143, 143);
-    border-radius: 50px; 
+/* Optional: custom styles */
+body {
+  @apply bg-gray-100 text-gray-800;
 }
