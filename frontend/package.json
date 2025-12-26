@@ -13,10 +13,13 @@
     "concurrently": "^8.2.2"
   },
   "scripts": {
-  "start": "react-scripts start",
-  "backend": "cd ../backend/ems-backend && mvn spring-boot:run",
-  "dev": "concurrently \"npm start\" \"npm run backend\""
-},
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "backend": "cd ../backend/ems-backend && mvn spring-boot:run",
+    "dev": "concurrently \"npm start\" \"npm run backend\""
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -1,11 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "http://localhost:8081",
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 10000,
 });
 
 api.interceptors.request.use(
@@ -22,12 +21,9 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response) {
-      console.error("API Error:", error.response.status, error.response.data);
-    } else if (error.request) {
-      console.error("No response from server");
-    } else {
-      console.error("Request error:", error.message);
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");
+      window.location.href = "/login";
     }
     return Promise.reject(error);
   }
